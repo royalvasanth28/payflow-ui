@@ -1,0 +1,39 @@
+<div>
+    <ul>
+        <li *ngFor="let contactType of contactTypes">
+            <p><strong>contactTypeId:</strong> {{contactType.contactTypeId}}</p>
+            <p><strong>contactTypeName:</strong> {{contactType.contactTypeName}}</p>
+            <p><strong>contactTypeCode:</strong> {{contactType.contactTypeCode}}</p>
+            <p><strong>contactNature:</strong> {{contactType.contactNature}}</p>
+            <p><strong>createdBy:</strong> {{contactType.createdBy}}</p>
+            <p><strong>updatedBy:</strong> {{contactType.updatedBy}}</p>
+            <p><strong>createdAt:</strong> {{contactType.createdAt}}</p>
+            <p><strong>updatedAt:</strong> {{contactType.updatedAt}}</p>
+
+            <div *ngIf="contactType.contacts && contactType.contacts.length >0">
+                <h4>Contacts:</h4>
+                <ul>
+                    <li *ngFor="let contact of contactType.contacts">
+                        <p><strong>contactId:</strong> {{contact.contactId}}</p>
+                        <p><strong>name:</strong> {{contact.name}}</p>
+                        <p><strong>email:</strong> {{contact.email}}</p>
+                        <p><strong>phone:</strong> {{contact.phone}}</p>
+                        <p><strong>website:</strong> {{contact.website}}</p>
+                        <p><strong>status:</strong> {{contact.status}}</p>
+                        <p><strong>facebook:</strong> {{contact.facebook}}</p>
+                        <p><strong>notes:</strong> {{contact.notes}}</p>
+                        <p><strong>gst:</strong> {{contact.gst}}</p>
+                        <p><strong>imageId:</strong> {{contact.imageId}}</p>
+                        <p><strong>dueListing:</strong> {{contact.dueListing}}</p>
+                        <p><strong>createdBy:</strong> {{contact.createdBy}}</p>
+                        <p><strong>updatedBy:</strong> {{contact.updatedBy}}</p>
+                        <p><strong>createdAt:</strong> {{contact.createdAt}}</p>
+                        <p><strong>updatedAt:</strong> {{contact.updatedAt}}</p>
+                        <p><strong>deletedAt:</strong> {{contact.deletedAt}}</p>
+                        <hr />
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
