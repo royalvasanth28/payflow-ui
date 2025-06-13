@@ -10,7 +10,6 @@ import { ContactListService } from '../../../core/services/contact-list.service'
 export class ContactListComponent implements OnInit {
 
   contacts: any[] = [];
-
   constructor(private contactService: ContactListService) { }
  
   ngOnInit(): void {

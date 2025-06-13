@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="users.length>0;else noData">
     <ul>
         <li *ngFor="let user of users">
             <p><strong>id:</strong> {{user.id}}</p>
@@ -14,3 +14,7 @@
         </li>
     </ul>
 </div>
+
+<ng-template #noData>
+    <p>No User's found or failed to fetch data.</p>
+</ng-template>

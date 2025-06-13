@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="contacts.length>0 ; else noData">
     <ul>
         <li *ngFor="let contact of contacts">
             <p><strong>ContactId:</strong> {{contact.contactId}}</p>
@@ -20,3 +20,7 @@
         </li>
     </ul>
 </div>
+
+<ng-template #noData>
+  <p>No contacts found or failed to fetch data.</p>
+</ng-template>

@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="contactTypes.length >0; else noData">
     <ul>
         <li *ngFor="let contactType of contactTypes">
             <p><strong>contactTypeId:</strong> {{contactType.contactTypeId}}</p>
@@ -37,3 +37,7 @@
         </li>
     </ul>
 </div>
+
+<ng-template #noData>
+    <p>No Contact Type's found or failed to fetch data.</p>
+</ng-template>
