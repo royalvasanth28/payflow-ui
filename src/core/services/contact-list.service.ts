@@ -13,4 +13,4 @@ export class ContactListService {
   getContacts(): Observable<{ status: boolean; message: string; data: any[] }> {
   return this.http.get<{ status: boolean; message: string; data: any[] }>('http://localhost:8080/payflow/Contact');
 }
-}
+} 

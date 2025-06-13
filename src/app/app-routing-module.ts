@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactListComponent } from './contact/contact-list.component/contact-list';
+import { ContactListComponent } from './contact/contact-list.component/contact-list.component';
 import { ContactTypeComponent } from './contact_type/contact-type.component/contact-type.component';
 import { UserComponenet } from './user/user.component/user.component';
 
