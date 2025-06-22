@@ -1,16 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactListService {
 
-  private url='http://localhost:8080/payflow/Contact';
-  constructor(private http:HttpClient) { }
+  private url: string = 'http://localhost:8080/payflow/Contact';
+  constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<{ status: boolean; message: string; data: any[] }> {
-  return this.http.get<{ status: boolean; message: string; data: any[] }>('http://localhost:8080/payflow/Contact');
-}
+  getContacts() {
+    return this.http.get(this.url);
+  }
+
+  postContact(contact: any) {
+    return this.http.post(this.url, contact);
+  }
+
+  updateContact(contact: any) {
+    return this.http.put(this.url, contact);
+  }
+
+  deleteContact(contactId: number) {
+    return this.http.delete(`http://localhost:8080/payflow/Contact/contactId/${contactId}`);
+  }
 } 

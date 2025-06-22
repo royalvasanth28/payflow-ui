@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Create & Update Contact</h2>
+    </div>
+</div>
+
+<div class="col-12 pt-2">
+    <div class="card">
+        <div class="card-header bg-warning text-center">
+            <h5>Create New Contact</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 mt-2">
+                    <label>Name <span class="text-danger">*</span></label>
+                    <input type="text" [(ngModel)]="contactObj.name" class="form-control" placeholder="Contact Name"
+                        required>
+                </div>
+                <div class="col-4 mt-2">
+                    <label>Email</label>
+                    <input type="email" [(ngModel)]="contactObj.email" class="form-control"
+                        placeholder="Enter Email Id">
+                </div>
+                <div class="col-4 mt-2">
+                    <label>Phone</label>
+                    <input type="number" [(ngModel)]="contactObj.phone" class="form-control"
+                        placeholder="Enter Phone Number">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Website</label>
+                    <input type="text" [(ngModel)]="contactObj.website" class="form-control"
+                        placeholder="Enter Website">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Status</label>
+                    <select [(ngModel)]="contactObj.status" class="form-control">
+                        <option [ngValue]="true">Active</option>
+                        <option [ngValue]="false">Inactive</option>
+                    </select>
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Facebook</label>
+                    <input type="text" [(ngModel)]="contactObj.facebook" class="form-control"
+                        placeholder="Enter Facebook">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Notes</label>
+                    <input type="text" [(ngModel)]="contactObj.notes" class="form-control" placeholder="Notes">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>GST</label>
+                    <input type="text" [(ngModel)]="contactObj.gst" class="form-control" placeholder="Enter GST No">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Image Id</label>
+                    <input type="text" [(ngModel)]="contactObj.imageId" class="form-control" placeholder="Image Id">
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Due Listing</label>
+                    <select [(ngModel)]="contactObj.dueListing" class="form-control">
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
+                    </select>
+                </div>
+                <div class="col-4 mt-3">
+                    <label>Contact Type Id</label>
+                    <input type="number" [(ngModel)]="contactObj.contactType.contactTypeId" class="form-control"
+                        placeholder="Enter Contact Type Id">
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-1">
+                    <button class="btn btn-secondary" (click)="resetContactForm()">Reset</button>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-success" (click)="onSaveContact()">Save Contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-warning text-center">
+                <h5>Contact list</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Website</th>
+                                <th>Status</th>
+                                <th>Facebook</th>
+                                <th>Notes</th>
+                                <th>GST</th>
+                                <th>Image Id</th>
+                                <th>Due listing</th>
+                                <th>Created By</th>
+                                <th>Updated By</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let contact of contacts">
+                                <td>{{contact.contactId}}</td>
+                                <td>{{contact.name}}</td>
+                                <td>{{contact.email}}</td>
+                                <td>{{contact.phone}}</td>
+                                <td>{{contact.website}}</td>
+                                <td>{{contact.status}}</td>
+                                <td>{{contact.facebook}}</td>
+                                <td>{{contact.notes}}</td>
+                                <td>{{contact.gst}}</td>
+                                <td>{{contact.imageId}}</td>
+                                <td>{{contact.dueListing}}</td>
+                                <td>{{contact.createdBy}}</td>
+                                <td>{{contact.updatedBy}}</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <button class="btn btn-success me-2"
+                                            (click)="onEditContact(contact)">Edit</button>
+                                        <button class="btn btn-danger"
+                                            (click)="onDeleteContact(contact.contactId)">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
