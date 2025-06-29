@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Contact Type List</h2>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header text-center bg-warning">
+                <h5>Contact Type List</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Nature</th>
+                            <th>Created By</th>
+                            <th>Updated By</th>
+                            <th>Contacts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contactType of contactTypes">
+                            <td>{{contactType.contactTypeId}}</td>
+                            <td>{{contactType.contactTypeName}}</td>
+                            <td>{{contactType.contactTypeCode}}</td>
+                            <td>{{contactType.contactNature}}</td>
+                            <td>{{contactType.createdBy}}</td>
+                            <td>{{contactType.updatedBy}}</td>
+                            <td>
+                                <ul>
+                                    <li *ngFor="let contact of contactType.contacts">
+                                        {{contact.contactId}} - ({{contact.name}})
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

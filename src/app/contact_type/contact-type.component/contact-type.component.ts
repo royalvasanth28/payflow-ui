@@ -14,7 +14,7 @@ export class ContactTypeComponent implements OnInit {
   constructor(private contactTypeService: ContactTypeService) { }
 
   ngOnInit(): void {
-    this.contactTypeService.getContactType().subscribe(result =>{
+    this.contactTypeService.getContactType().subscribe((result :any) =>{
       this.contactTypes = result.data;
     })
   }

@@ -18,8 +18,8 @@ export class ContactViewComponent implements OnInit{
   }
 
   showcontact(){
-    this.contactView.getContacts().subscribe((res:any) =>{
-      this.contacts = res.data;
+    this.contactView.getContacts().subscribe((result:any) =>{
+      this.contacts = result.data;
     })
   }
 }

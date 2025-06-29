@@ -20,11 +20,9 @@ export class CreateUpdateContactComponent implements OnInit {
     "status": true,
     "facebook": "",
     "notes": "",
-    "gst": "",
+    "gst": "", 
     "imageId": "",
     "dueListing": true,
-    "createdBy": "",
-    "updatedBy": "",
     "contactType": {
       "contactTypeId": null
     }
@@ -84,8 +82,6 @@ export class CreateUpdateContactComponent implements OnInit {
       "gst": "",
       "imageId": "",
       "dueListing": true,
-      "createdBy": "",
-      "updatedBy": "",
       "contactType": {
         "contactTypeId": null
       }
@@ -103,9 +99,7 @@ export class CreateUpdateContactComponent implements OnInit {
       "notes": contact.notes || "",
       "gst": contact.gst || "",
       "imageId": contact.imageId || "",
-      "dueListing": contact.dueListing ?? true,
-      "createdBy": contact.createdBy || "",
-      "updatedBy": contact.updatedBy || "",
+      "dueListing": contact.dueListing ?? true, 
       "contactType": contact.contactType
         ? { contactTypeId: contact.contactType.contactTypeId }
         : { contactTypeId: null }

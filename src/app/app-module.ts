@@ -10,6 +10,10 @@ import { UserComponenet } from './user/user.component/user.component';
 import { ContactViewComponent } from './contact/contact-view/contact-view.component';
 import { CreateUpdateContactComponent } from './contact/create-update-contact/create-update-contact.component';
 import { FormsModule } from '@angular/forms';
+import { ContactTypeViewComponent } from './contact_type/contact-type-view/contact-type-view.component';
+import { CreateUpdateContactTypeComponent } from './contact_type/create-update-contact-type/create-update-contact-type.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     ContactTypeComponent,
     UserComponenet,
     ContactViewComponent,
-    CreateUpdateContactComponent
+    CreateUpdateContactComponent,
+    ContactTypeViewComponent,
+    CreateUpdateContactTypeComponent
   ],
   imports: [
     BrowserModule,

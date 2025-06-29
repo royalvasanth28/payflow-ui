@@ -5,6 +5,8 @@ import { ContactTypeComponent } from './contact_type/contact-type.component/cont
 import { UserComponenet } from './user/user.component/user.component';
 import { ContactViewComponent } from './contact/contact-view/contact-view.component';
 import { CreateUpdateContactComponent } from './contact/create-update-contact/create-update-contact.component';
+import { CreateUpdateContactTypeComponent } from './contact_type/create-update-contact-type/create-update-contact-type.component';
+import { ContactTypeViewComponent } from './contact_type/contact-type-view/contact-type-view.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'contact-type', component: ContactTypeComponent },
   { path: 'user', component: UserComponenet },
   {path:'contact-view', component:ContactViewComponent},
-  {path:'Create-update', component:CreateUpdateContactComponent} 
+  {path:'create-update', component:CreateUpdateContactComponent},
+  {path:'contact-type-view', component:ContactTypeViewComponent},
+  {path:'create-Update-contact-type',component:CreateUpdateContactTypeComponent}
 ];
 
 @NgModule({

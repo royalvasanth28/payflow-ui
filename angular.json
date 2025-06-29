@@ -104,6 +104,11 @@
       }
     }
   },
+  "schematics": {
+    "@schematics/angular:component": {
+      "standalone": false
+    }
+  },
   "cli": {
     "analytics": false
   }
