@@ -6,7 +6,7 @@ import { ContactTypeService } from '../../../core/services/contact-type.service'
   standalone: false,
   templateUrl: './contact-type.component.html',
   styleUrls: ['./contact-type.component.scss']
-})
+}) 
 export class ContactTypeComponent implements OnInit {
 
   contactTypes: any[] = [];

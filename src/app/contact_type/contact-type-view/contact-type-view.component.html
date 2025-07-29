@@ -1,42 +1,50 @@
-<div class="row">
-    <div class="col-12 text-center">
-        <h2>Contact Type List</h2>
+<div class="row pt-2">
+    <div class="col text-end">
+        <button class="btn btn-success btn-sm rounded-3" [routerLink]="['/contact-type/create']"><i
+                class="bi bi-plus-lg"></i> Create New Contact type</button>
     </div>
 </div>
 
-<div class="row pt-3">
+<div class="row pt-2">
     <div class="col-12">
-        <div class="card">
-            <div class="card-header text-center bg-warning">
-                <h5>Contact Type List</h5>
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header text-center bg-warning text-white py-3">
+                <h5 class="mb-0">Contact Type List <span class="bg-dark badge ms-2">({{contactTypes.length}})</span></h5>
             </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
+            <div class="card-body px-3 py-2">
+                <table class="table table-bordered align-middle shadow-sm">
+                    <thead class="table-light">
+                        <tr class="text-center">
                             <th>S.No</th>
                             <th>Name</th>
                             <th>Code</th>
                             <th>Nature</th>
                             <th>Created By</th>
-                            <th>Updated By</th>
+                            <th>Created At</th>
                             <th>Contacts</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         <tr *ngFor="let contactType of contactTypes">
                             <td>{{contactType.contactTypeId}}</td>
                             <td>{{contactType.contactTypeName}}</td>
                             <td>{{contactType.contactTypeCode}}</td>
                             <td>{{contactType.contactNature}}</td>
                             <td>{{contactType.createdBy}}</td>
-                            <td>{{contactType.updatedBy}}</td>
+                            <td>{{contactType.createdAt | date: 'medium' }}</td>
                             <td>
                                 <ul>
                                     <li *ngFor="let contact of contactType.contacts">
                                         {{contact.contactId}} - ({{contact.name}})
                                     </li>
                                 </ul>
+                            </td>
+                            <td> 
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-success btn-sm" [routerLink]="['/contact-type/edit',contactType.contactTypeId]"><i class="bi bi-pencil-fill"></i></button>
+                                    <button class="btn btn-danger btn-sm" (click)="onDeleteContactType(contactType.contactTypeId)"><i class="bi bi-trash3-fill"></i></button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

@@ -12,6 +12,12 @@ import { CreateUpdateContactComponent } from './contact/create-update-contact/cr
 import { FormsModule } from '@angular/forms';
 import { ContactTypeViewComponent } from './contact_type/contact-type-view/contact-type-view.component';
 import { CreateUpdateContactTypeComponent } from './contact_type/create-update-contact-type/create-update-contact-type.component';
+import { ViewProfile } from './temp/view-profile/view-profile';
+import { PersonalDetails } from './temp/personal-details/personal-details';
+import { EmergencyContacts } from './temp/emergency-contacts/emergency-contacts';
+import { WorkDetails } from './temp/work-details/work-details';
+import { AddressView } from './address/address-view/address-view.component';
+import { CreateUpdateAddress } from './address/create-update-address/create-update-address.component';
 
 
 
@@ -24,7 +30,13 @@ import { CreateUpdateContactTypeComponent } from './contact_type/create-update-c
     ContactViewComponent,
     CreateUpdateContactComponent,
     ContactTypeViewComponent,
-    CreateUpdateContactTypeComponent
+    CreateUpdateContactTypeComponent,
+    ViewProfile,
+    PersonalDetails,
+    EmergencyContacts,
+    WorkDetails,
+    AddressView,
+    CreateUpdateAddress
   ],
   imports: [
     BrowserModule,

@@ -1,48 +1,100 @@
-<div class="row">
-    <div class="col-12 text-center">
-        <h2>Contact List</h2>
+<div class="row pt-2">
+    <div class="col text-end">
+        <button class="btn btn-success rounded-3 btn-sm" [routerLink]="['/contacts/create']"><i
+                class="bi bi-plus-lg"></i> Create New Contact</button>
     </div>
 </div>
 
-<div class="row pt-3">
+<div class="row pt-2">
     <div class="col-12">
-        <div class="card">
-            <div class="card-header bg-warning text-center">
-                <h5>Contact list</h5>
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-warning text-white text-center py-3">
+                <h5 class="mb-0">Contact list <span class="badge bg-dark ms-2">({{contacts.length}})</span></h5>
             </div>
-            <div class="card-body">
+            <div class="card-body px-3 py-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
+                    <table class="table table-bordered align-middle shadow-sm">
+                        <thead class="table-light">
+                            <tr class="text-center">
                                 <th>S.No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Website</th>
-                                <th>Status</th>
-                                <th>Facebook</th>
-                                <th>Notes</th>
-                                <th>GST</th>
-                                <th>Due listing</th>
+                                <th>Notes</th> 
                                 <th>Created By</th>
+                                <th>Created At</th> 
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr *ngFor="let contact of contacts">
-                                <td>{{contact.contactId}}</td>
-                                <td>{{contact.name}}</td>
-                                <td>{{contact.email}}</td>
-                                <td>{{contact.phone}}</td>
-                                <td>{{contact.website}}</td>
-                                <td>{{contact.status ? 'Active' : 'Inactive'}}</td>
-                                <td>{{contact.facebook}}</td>
-                                <td>{{contact.notes}}</td>
-                                <td>{{contact.gst}}</td>
-                                <td>{{contact.dueListing ? 'Yes' : 'No'}}</td>
-                                <td>{{contact.createdBy}}</td>
+                        <tbody class="text-center">
+                            <ng-container *ngFor="let contact of contacts">
+                                <tr>
+                                    <td>{{contact.contactId}}</td>
+                                    <td>{{contact.name}}</td>
+                                    <td>{{contact.email}}</td>
+                                    <td>{{contact.phone}}</td>
+                                    <td>{{contact.notes}}</td>
+                                    <td>{{contact.createdBy}}</td>
+                                    <td>{{contact.createdAt |date: 'medium' }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button class="btn btn-success btn-sm"
+                                                [routerLink]="['/contacts/edit',contact.contactId]"><i
+                                                    class="bi bi-pencil-fill"></i></button>
+                                            <button class="btn btn-danger btn-sm"
+                                                (click)="onDeleteContact(contact.contactId)"><i
+                                                    class="bi bi-trash3-fill"></i> </button>
+                                            <button class="btn btn-info btn-sm" (click)="onViewContact(contact)"> <i
+                                                    class="bi bi-eye-fill"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="selectedContact?.contactId === contact.contactId">
+                                    <td colspan="8">
+                                        <div class="card shadow-sm border-0">
+                                            <div class="card-header bg-info text-white text-center py-2">
+                                                <h6 class="mb-0">Details for: {{ selectedContact.name }}</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6"><strong>Email:</strong> {{
+                                                        selectedContact.email }}</div>
+                                                    <div class="col-md-6"><strong>Phone:</strong> {{
+                                                        selectedContact.phone }}</div>
+                                                    <div class="col-md-6"><strong>Website:</strong> {{
+                                                        selectedContact.website }}</div>
+                                                    <div class="col-md-6"><strong>GST:</strong> {{ selectedContact.gst
+                                                        }}</div>
+                                                    <div class="col-md-6"><strong>Facebook:</strong> {{
+                                                        selectedContact.facebook }}</div>
+                                                    <div class="col-md-6"><strong>Updated by:</strong> {{
+                                                        selectedContact.updatedBy }}</div>
+                                                    <div class="col-md-6"><strong>Contact Type:</strong> {{
+                                                        selectedContact.contactType?.contactTypeName }}</div>
+                                                </div>
 
-                            </tr>
+                                                <hr>
+
+                                                <h6 class="mt-3">Addresses:</h6>
+                                                <div *ngFor="let addr of selectedContact.contactAddresses"
+                                                    class="border p-2 rounded mb-2">
+                                                    <div><strong>Street:</strong> {{ addr.address?.addressStreet }}
+                                                    </div>
+                                                    <div><strong>Street 2:</strong> {{ addr.address?.addressStreet_2 }}
+                                                    </div>
+                                                    <div><strong>City:</strong> {{ addr.address?.addressCity }}</div>
+                                                    <div><strong>District:</strong> {{ addr.address?.addressDist }}
+                                                    </div>
+                                                    <div><strong>State:</strong> {{ addr.address?.addressState }}</div>
+                                                    <div><strong>Pincode:</strong> {{ addr.address?.addressPinCode }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>   
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>

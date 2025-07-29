@@ -6,22 +6,26 @@ import { Injectable } from '@angular/core';
 })
 export class ContactListService {
 
-  private url: string = 'http://localhost:8080/payflow/Contact';
+  private baseUrl = 'http://localhost:8080/payflow/Contact';
   constructor(private http: HttpClient) { }
 
   getContacts() {
-    return this.http.get(this.url);
+    return this.http.get(`${this.baseUrl}`);
+  }
+
+  getContactById(contactId: number){
+    return this.http.get(`${this.baseUrl}/${contactId}`);
   }
 
   postContact(contact: any) {
-    return this.http.post(this.url, contact);
+    return this.http.post(`${this.baseUrl}/create`,contact);
   }
 
   updateContact(contact: any) {
-    return this.http.put(this.url, contact);
+    return this.http.put(`${this.baseUrl}/update/${contact.contactId}`, contact);
   }
 
   deleteContact(contactId: number) {
-    return this.http.delete(`http://localhost:8080/payflow/Contact/contactId/${contactId}`);
+    return this.http.delete(`${this.baseUrl}/contactId/${contactId}`);
   }
 } 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactTypeService } from '../../../core/services/contact-type.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-update-contact-type',
@@ -18,27 +19,38 @@ export class CreateUpdateContactTypeComponent implements OnInit {
     "contactNature": "",
   }
 
-  constructor(private contactType: ContactTypeService) {
-
-  }
+  pageTitle = "Create New Contact Type";
+  buttonLable = "Save Contact Type";
+  constructor(private contactTypeService: ContactTypeService, private route:ActivatedRoute, private router:Router) {}
 
   ngOnInit(): void {
-    this.loadContactType();
-  }
+    const id = this.route.snapshot.paramMap.get('id');
+    if(id){
+      this.pageTitle = 'Update contact type';
+      this.buttonLable = 'Update contact type';
+       this.loadContactTypeById(Number(id));
+    }
+  } 
 
-  loadContactType() {
-    this.contactType.getContactType().subscribe((result: any) => {
-      this.contactTypes = result.data;
-    })
+  loadContactTypeById(id:number) {
+    this.contactTypeService.getContactTypeById(id).subscribe({
+      next: (res:any) =>{
+        this.contactTypeObj = res.data;
+      },
+      error: (err:any) =>{
+        alert('Error loading contact type');
+        console.error(err);
+      }
+    });
   }
 
   saveContactType() {
     if (this.contactTypeObj.contactTypeId) {
-      this.contactType.updateContactType(this.contactTypeObj).subscribe({
+      this.contactTypeService.updateContactType(this.contactTypeObj).subscribe({
         next: (result: any) => {
           alert('Contact Type Updated Successfully');
+          this.router.navigate(['/contact-types'])
           this.resetContactType();
-          this.loadContactType();
         },
         error: (err) => {
           console.log('Update err:', err);
@@ -46,11 +58,11 @@ export class CreateUpdateContactTypeComponent implements OnInit {
         }
       });
     } else {
-      this.contactType.postContactType(this.contactTypeObj).subscribe({
+      this.contactTypeService.postContactType(this.contactTypeObj).subscribe({
         next: (result: any) => {
           alert('Contact Type Created Successfully');
+          this.router.navigate(['/contact-types'])
           this.resetContactType();
-          this.loadContactType();
         },
         error: (err) => {
           console.log('Create err:', err);
@@ -66,31 +78,6 @@ export class CreateUpdateContactTypeComponent implements OnInit {
       "contactTypeName": "",
       "contactTypeCode": "",
       "contactNature": "",
-    }
-  }
-
-  onEditContactType(contactType: any) {
-    this.contactTypeObj = {
-      "contactTypeId": contactType.contactTypeId,
-      "contactTypeName": contactType.contactTypeName || "",
-      "contactTypeCode": contactType.contactTypeCode || "",
-      "contactNature": contactType.contactNature || "",
-    };
-  }
-
-  onDeleteContactType(contactTypeId: number) {
-    if (confirm('Are you want to delete this contact Type?')) {
-      this.contactType.deleteContactType(contactTypeId).subscribe({
-        next: () => {
-          alert('Contact Type deleted successfully');
-          this.loadContactType();
-          this.resetContactType();
-        },
-        error: (err: any) => {
-          console.log('Delete error:', err);
-          alert('Error deleting contact Type');
-        }
-      });
     }
   }
 }

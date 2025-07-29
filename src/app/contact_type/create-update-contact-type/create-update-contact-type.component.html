@@ -1,90 +1,37 @@
-<div class="row">
-    <div class="col-12 text-center">
-        <h2>Create, Update & Delete Contact Type</h2>
-    </div>
-</div>
-
-<div class="row mt-3    ">
+<div class="row p-3">
     <div class="col-12">
         <div class="card">
-            <div class="card-header text-center bg-warning">
-                <h5>Create Contact Type</h5>
+            <div class="card-header text-center text-white bg-warning">
+                <h5 class="text-white m-0"> {{ pageTitle}}</h5>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        <label>Name</label>
-                        <input type="text" [(ngModel)]="contactTypeObj.contactTypeName" class="form-control"
-                            placeholder="Enter Contact Type Name">
-                    </div>
-                    <div class="col-4">
-                        <label>Code</label>
-                        <input type="text" [(ngModel)]="contactTypeObj.contactTypeCode" class="form-control"
-                            placeholder="Enter Contact Type Code">
-                    </div>
-                    <div class="col-4">
-                        <label>Nature</label>
-                        <input type="text" [(ngModel)]="contactTypeObj.contactNature" class="form-control"
-                            placeholder="Enter Contact Type nature">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1 mt-3">
-                        <button class="btn btn-secondary" (click)="resetContactType()">Reset</button>
-                    </div>
-                    <div class="col-2 mt-3">
-                        <button class="btn btn-success" (click)="saveContactType()">Save Contact Type</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="row mt-3">
-    <div class="col">
-        <div class="card mt-3">
-            <div class="card-header text-center bg-warning">
-                <h5>Edit & Delete Contact Type</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Name</th>
-                            <th>Code</th>
-                            <th>Nature</th>
-                            <th>Created By</th>
-                            <th>updated By</th>
-                            <th>Contacts</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let contactType of contactTypes">
-                            <td>{{contactType.contactTypeId}}</td>
-                            <td>{{contactType.contactTypeName}}</td>
-                            <td>{{contactType.contactTypeCode}}</td>
-                            <td>{{contactType.contactNature}}</td>
-                            <td>{{contactType.createdBy}}</td>
-                            <td>{{contactType.updatedBy}}</td>
-                            <td>
-                                <ul>
-                                    <li *ngFor="let contact of contactType.contacts">{{contact.contactId}}
-                                        -({{contact.name}})</li>
-                                </ul>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <button class="btn btn-success me-2" (click)="onEditContactType(contactType)">Edit</button>
-                                    <button class="btn btn-danger"
-                                        (click)="onDeleteContactType(contactType.contactTypeId)">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card-body pt-3">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4"> 
+                            <label for="name">Name</label>
+                            <input id="name" type="text" [(ngModel)]="contactTypeObj.contactTypeName"
+                                name="contactTypeName" class="form-control" placeholder="Enter Contact Type Name">
+                        </div>
+                        <div class="col-md-4"> 
+                            <label for="code">Code</label>
+                            <input id="code" type="text" [(ngModel)]="contactTypeObj.contactTypeCode"
+                                name="contactTypeCode" class="form-control" placeholder="Enter Contact Type Code">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="nature">Nature</label>
+                            <input id="nature" type="text" [(ngModel)]="contactTypeObj.contactNature"
+                                name="contactNature" class="form-control" placeholder="Enter Contact Type nature">
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="d-flex gap-2 justify-content-end">
+                            <button class="btn btn-secondary" (click)="resetContactType()">Reset</button>
+                            <button class="btn btn-success" (click)="saveContactType()"> {{ buttonLable }}</button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>

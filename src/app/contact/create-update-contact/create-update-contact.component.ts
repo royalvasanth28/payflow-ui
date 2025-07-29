@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactListService } from '../../../core/services/contact-list.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-update-contact',
@@ -14,61 +15,75 @@ export class CreateUpdateContactComponent implements OnInit {
   contactObj: any = {
     "contactId": null,
     "name": "",
-    "email": "",
+    "email": "", 
     "phone": "",
     "website": "",
     "status": true,
     "facebook": "",
     "notes": "",
-    "gst": "", 
+    "gst": "",
     "imageId": "",
     "dueListing": true,
     "contactType": {
       "contactTypeId": null
     }
-  }
-  contactService: any;
+  };
 
-  constructor(private contact: ContactListService) {
-    this.loadContact();
-  }
+  pageTitle = 'Create New Contact';
+  buttonLabel = 'Save Contact';
+
+  constructor(private contactService: ContactListService, private route: ActivatedRoute,private router:Router) { }
+
   ngOnInit(): void {
-    this.loadContact();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.pageTitle = 'Update Contact';
+      this.buttonLabel = 'Update Contact';
+      this.loadContactById(Number(id));
+    }
   }
 
-  loadContact() {
-    this.contact.getContacts().subscribe((res: any) => {
-      this.contacts = res.data;
+  loadContactById(id: number) {
+    this.contactService.getContactById(id).subscribe({
+      next: (res: any) => {
+        this.contactObj = res.data;
+      },
+      error: (err: any) => {
+        alert('Error loading contact');
+        console.error(err);
+      }
     });
   }
 
   onSaveContact() {
     if (this.contactObj.contactId) {
-      this.contact.updateContact(this.contactObj).subscribe({
-        next: (result: any) => {
+      this.contactService.updateContact(this.contactObj).subscribe({
+        next: () => {
           alert('Contact updated successfully');
+          this.router.navigate(['/contacts'])
           this.resetContactForm();
-          this.loadContact();
         },
-        error: (err) => {
-          console.error('Update error:', err);
+        error: (err: any) => {
           alert('Error updating contact');
+          console.error(err);
         }
       });
     } else {
-      this.contact.postContact(this.contactObj).subscribe({
-        next: (result: any) => {
+      this.contactService.postContact(this.contactObj).subscribe({
+        next: () => {
           alert('Contact created successfully');
+          this.router.navigate(['/contacts'])
           this.resetContactForm();
-          this.loadContact();
         },
-        error: (err) => {
-          console.error('Create error:', err);
+        error: (err: any) => {
           alert('Error creating contact');
+          console.error(err);
         }
       });
     }
   }
+
+
   resetContactForm() {
     this.contactObj = {
       "contactId": null,
@@ -87,46 +102,7 @@ export class CreateUpdateContactComponent implements OnInit {
       }
     };
   }
-  onEditContact(contact: any) {
-    this.contactObj = {
-      "contactId": contact.contactId,
-      "name": contact.name || "",
-      "email": contact.email || "",
-      "phone": contact.phone || "",
-      "website":contact.website || "",
-      "status": contact.status ?? true,
-      "facebook": contact.facebook || "",
-      "notes": contact.notes || "",
-      "gst": contact.gst || "",
-      "imageId": contact.imageId || "",
-      "dueListing": contact.dueListing ?? true, 
-      "contactType": contact.contactType
-        ? { contactTypeId: contact.contactType.contactTypeId }
-        : { contactTypeId: null }
-    };
-  }
-
-  onDeleteContact(contactId: number) {
-  if (confirm('Are you sure you want to delete this contact?')) {
-    this.contact.deleteContact(contactId).subscribe({
-      next: () => {
-        alert('Contact deleted successfully');
-        this.loadContact();
-        this.resetContactForm();
-      },
-      error: (err :any) => {
-        console.error('Delete error:', err);
-        alert('Error deleting contact');
-      }
-    });
-  }
-}
 
 }
-
-
-
-
-
 
 

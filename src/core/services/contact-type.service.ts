@@ -7,23 +7,27 @@ import { Observable } from 'rxjs';
 })
 export class ContactTypeService {
 
-  private url: string = 'http://localhost:8080/payflow/ContactType';
+  private baseUrl = 'http://localhost:8080/payflow/ContactType';
   constructor(private http: HttpClient) { }
 
   getContactType(){
-    return this.http.get(this.url); 
+    return this.http.get(`${this.baseUrl}`); 
+  }
+
+  getContactTypeById(contactTypeId:number){
+     return this.http.get(`${this.baseUrl}/${contactTypeId}`)
   }
 
   postContactType(contactType:any){
-    return this.http.post(this.url,contactType);
+    return this.http.post(`${this.baseUrl}/create`,contactType);
   }
 
   updateContactType(contactType:any){
-    return this.http.put(this.url,contactType);
+    return this.http.put(`${this.baseUrl}/update/${contactType.contactTypeId}`,contactType);
   }
 
-  deleteContactType(contactTypeid:number){
-    return this.http.delete(`${this.url}/id/${contactTypeid}`);
+  deleteContactType(contactTypeId:number){
+    return this.http.delete(`${this.baseUrl}/id/${contactTypeId}`);
   }
 }
  

@@ -1,138 +1,79 @@
-<div class="row">
-    <div class="col-12 text-center">
-        <h2>Create & Update Contact</h2>
-    </div>
-</div>
-
-<div class="col-12 pt-2">
-    <div class="card">
-        <div class="card-header bg-warning text-center">
-            <h5>Create New Contact</h5>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4 mt-2">
-                    <label>Name</label>
-                    <input type="text" [(ngModel)]="contactObj.name" class="form-control" placeholder="Contact Name">
-                </div>
-                <div class="col-4 mt-2">
-                    <label>Email</label>
-                    <input type="email" [(ngModel)]="contactObj.email" class="form-control"
-                        placeholder="Enter Email Id">
-                </div>
-                <div class="col-4 mt-2"> 
-                    <label>Phone</label>
-                    <input type="number" [(ngModel)]="contactObj.phone" class="form-control"
-                        placeholder="Enter Phone Number">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Website</label>
-                    <input type="text" [(ngModel)]="contactObj.website" class="form-control"
-                        placeholder="Enter Website">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Status</label>
-                    <select [(ngModel)]="contactObj.status" class="form-control">
-                        <option [ngValue]="true">Active</option>
-                        <option [ngValue]="false">Inactive</option>
-                    </select>
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Facebook</label>
-                    <input type="text" [(ngModel)]="contactObj.facebook" class="form-control"
-                        placeholder="Enter Facebook">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Notes</label>
-                    <input type="text" [(ngModel)]="contactObj.notes" class="form-control" placeholder="Notes">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>GST</label>
-                    <input type="text" [(ngModel)]="contactObj.gst" class="form-control" placeholder="Enter GST No">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Image Id</label>
-                    <input type="text" [(ngModel)]="contactObj.imageId" class="form-control" placeholder="Image Id">
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Due Listing</label>
-                    <select [(ngModel)]="contactObj.dueListing" class="form-control">
-                        <option [ngValue]="true">Yes</option>
-                        <option [ngValue]="false">No</option>
-                    </select>
-                </div>
-                <div class="col-4 mt-3">
-                    <label>Contact Type Id</label>
-                    <input type="number" [(ngModel)]="contactObj.contactType.contactTypeId" class="form-control"
-                        placeholder="Enter Contact Type Id">
-                </div>
-            </div>
-            <div class="row pt-4">
-                <div class="col-1">
-                    <button class="btn btn-secondary" (click)="resetContactForm()">Reset</button>
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-success" (click)="onSaveContact()">Save Contact</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row pt-3">
-    <div class="col-12">
-        <div class="card">
+<div class="row pt-2">
+    <div class="col-12 pt-2 pb-4">
+        <div class="card shadow-sm m-3">
             <div class="card-header bg-warning text-center">
-                <h5>Contact list</h5>
+                <h5 class="text-white m-0 "> {{ pageTitle }}</h5>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Website</th>
-                                <th>Status</th>
-                                <th>Facebook</th>
-                                <th>Notes</th>
-                                <th>GST</th>
-                                <th>Image Id</th>
-                                <th>Due listing</th>
-                                <th>Created By</th>
-                                <th>Updated By</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let contact of contacts">
-                                <td>{{contact.contactId}}</td>
-                                <td>{{contact.name}}</td>
-                                <td>{{contact.email}}</td>
-                                <td>{{contact.phone}}</td>
-                                <td>{{contact.website}}</td>
-                                <td>{{contact.status}}</td>
-                                <td>{{contact.facebook}}</td>
-                                <td>{{contact.notes}}</td>
-                                <td>{{contact.gst}}</td>
-                                <td>{{contact.imageId}}</td>
-                                <td>{{contact.dueListing}}</td>
-                                <td>{{contact.createdBy}}</td>
-                                <td>{{contact.updatedBy}}</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <button class="btn btn-success me-2"
-                                            (click)="onEditContact(contact)">Edit</button>
-                                        <button class="btn btn-danger"
-                                            (click)="onDeleteContact(contact.contactId)">Delete</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="card-body pt-3">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" [(ngModel)]="contactObj.name" name="name" class="form-control"
+                                placeholder="Contact Name">
+                        </div> 
+                        <div class="col-md-4">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" [(ngModel)]="contactObj.email" name="email" class="form-control"
+                                placeholder="Enter Email Id">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="number">Phone</label>
+                            <input id="number" type="number" [(ngModel)]="contactObj.phone" name="phone" class="form-control"
+                                placeholder="Enter Phone Number">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ws">Website</label>
+                            <input id="ws" type="text" [(ngModel)]="contactObj.website" name="website" class="form-control"
+                                placeholder="Enter Website">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="status">Status</label>
+                            <select id="status" [(ngModel)]="contactObj.status" name="status" class="form-control">
+                                <option [ngValue]="true">Active</option>
+                                <option [ngValue]="false">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fb">Facebook</label>
+                            <input id="fb" type="text" [(ngModel)]="contactObj.facebook" name="facebook" class="form-control"
+                                placeholder="Enter Facebook">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="notes">Notes</label>
+                            <input id="notes" type="text" [(ngModel)]="contactObj.notes" name="notes" class="form-control"
+                                placeholder="Notes">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="gst">GST</label>
+                            <input id="gst" type="text" [(ngModel)]="contactObj.gst" name="gst" class="form-control"
+                                placeholder="Enter GST No">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="iId">Image Id</label>
+                            <input id="iId" type="text" [(ngModel)]="contactObj.imageId" name="imageId" class="form-control"
+                                placeholder="Image Id">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="DL">Due Listing</label>
+                            <select id="DL" [(ngModel)]="contactObj.dueListing" name="dueListing" class="form-control">
+                                <option [ngValue]="true">Yes</option>
+                                <option [ngValue]="false">No</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cti">Contact Type Id</label>
+                            <input id="cti" type="number" [(ngModel)]="contactObj.contactType.contactTypeId" name="contact"
+                                class="form-control" placeholder="Enter Contact Type Id">
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary" (click)="resetContactForm()">Reset</button>
+                            <button class="btn btn-success" (click)="onSaveContact()">{{ buttonLabel }}</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

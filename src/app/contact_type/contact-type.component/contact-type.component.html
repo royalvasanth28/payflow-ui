@@ -10,7 +10,7 @@
             <p><strong>createdAt:</strong> {{contactType.createdAt}}</p>
             <p><strong>updatedAt:</strong> {{contactType.updatedAt}}</p>
 
-            <div *ngIf="contactType.contacts && contactType.contacts.length >0">
+            <div *ngIf="contactType.contacts && contactType.contacts.length >0"> 
                 <h4>Contacts:</h4>
                 <ul>
                     <li *ngFor="let contact of contactType.contacts">
