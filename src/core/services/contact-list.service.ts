@@ -12,7 +12,7 @@ export class ContactListService {
   getContacts() {
     return this.http.get(`${this.baseUrl}`);
   }
-
+ 
   getContactById(contactId: number){
     return this.http.get(`${this.baseUrl}/${contactId}`);
   }
@@ -21,11 +21,11 @@ export class ContactListService {
     return this.http.post(`${this.baseUrl}/create`,contact);
   }
 
-  updateContact(contact: any) {
+  updateContact(contactId:number,contact: any) {
     return this.http.put(`${this.baseUrl}/update/${contact.contactId}`, contact);
   }
 
   deleteContact(contactId: number) {
-    return this.http.delete(`${this.baseUrl}/contactId/${contactId}`);
+    return this.http.delete(`${this.baseUrl}/delete/${contactId}`);
   }
 } 

@@ -1,1 +1,143 @@
-<p>address-view works!</p>
+<div class="row">
+    <div class="col text-end py-2">
+        <button class="btn btn-success btn-sm rounded-3" [routerLink]="['/address/create']"><i
+                class="bi bi-plus-lg"></i> Create New Address</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card text-center shadow-sm border-0 mb-4">
+            <div class="card-header bg-warning py-3">
+                <h5 class="text-white m-0">Address List<span
+                        class="badge bg-dark ms-2">({{addresses.length}})</span></h5>
+            </div>
+            <div class="card-body py-3 px-2">
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle shadow-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Address Id</th>
+                                <th>Address Street</th>
+                                <th>Address Street_2</th>
+                                <th>City</th>
+                                <th>District</th>
+                                <th>State</th>
+                                <th>Pincode</th>
+                                <th>Created By</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let address of addresses; let i = index">
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{address.addressId}}</td>
+                                    <td>{{address.addressStreet}}</td>
+                                    <td>{{address.addressStreet_2}}</td>
+                                    <td>{{address.addressCity}}</td>
+                                    <td>{{address.addressDist}}</td>
+                                    <td>{{address.addressState}}</td>
+                                    <td>{{address.addressPinCode}}</td>
+                                    <td>{{address.createdBy}}</td>
+                                    <td>{{address.createdAt | date:'medium'}}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2 ">
+                                            <button class="btn btn-success btn-sm"
+                                                [routerLink]="['/address/edit',address.addressId]"><i
+                                                    class="bi bi-pencil-fill"></i></button>
+                                            <button class="btn btn-danger btn-sm"
+                                                (click)="onDeleteAddress(address.addressId)"><i
+                                                    class="bi bi-trash3-fill"></i></button>
+                                            <button class="btn btn-info btn-sm" (click)="onShowAddress(address)"><i
+                                                    class="bi bi-eye-fill"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="selectedAddress?.addressId === address.addressId">
+                                    <td colspan="10">
+                                        <div class="card shadow-sm border-0">
+                                            <div class="card-header bg-info text-white text-center py-2">
+                                                <h6 class="m-0">Details for: {{selectedAddress.addressStreet}}</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <strong>Address Type: </strong> {{selectedAddress.addressType}}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <strong>Update By: </strong> {{selectedAddress.updatedBy}}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <strong>Updated At: </strong> {{selectedAddress.updatedAt}}
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+
+                                                <h6 class="mt-3">Contacts:</h6>
+                                                <div *ngFor="let add of selectedAddress.contactAddresses"
+                                                    class="border p-2 rounded mb-2">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <strong>ID: </strong>{{add.contact.contactId}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Name: </strong> {{add.contact?.name}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Email: </strong>{{add.contact?.email}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Phone: </strong>{{add.contact.phone}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Website: </strong>{{add.contact.website}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Status: </strong>{{add.contact.status}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Facebook: </strong>{{add.contact.facebook}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>Notes: </strong>{{add.contact.notes}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>GST: </strong>{{add.contact.gst}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>ImageId: </strong>{{add.contact.imageId}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>DueListing: </strong>{{add.contact.dueListing}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>CreatedBy: </strong>{{add.contact.createdBy}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>UpdatedBy: </strong>{{add.contact.updatedBy}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>CreatedAt: </strong>{{add.contact.createdAt}}
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <strong>UpdatedAt: </strong>{{add.contact.updatedAt}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

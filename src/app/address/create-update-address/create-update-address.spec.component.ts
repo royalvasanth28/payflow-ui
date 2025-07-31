@@ -10,7 +10,7 @@ describe('CreateUpdateAddress', () => {
     await TestBed.configureTestingModule({
       declarations: [CreateUpdateAddressComponent]
     })
-    .compileComponents();
+    .compileComponents(); 
 
     fixture = TestBed.createComponent(CreateUpdateAddressComponent);
     component = fixture.componentInstance;

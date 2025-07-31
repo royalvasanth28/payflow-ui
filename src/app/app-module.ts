@@ -16,8 +16,10 @@ import { ViewProfile } from './temp/view-profile/view-profile';
 import { PersonalDetails } from './temp/personal-details/personal-details';
 import { EmergencyContacts } from './temp/emergency-contacts/emergency-contacts';
 import { WorkDetails } from './temp/work-details/work-details';
-import { AddressView } from './address/address-view/address-view.component';
-import { CreateUpdateAddress } from './address/create-update-address/create-update-address.component';
+import { AddressViewComponent } from './address/address-view/address-view.component';
+import { CreateUpdateAddressComponent } from './address/create-update-address/create-update-address.component';
+import { ContactAddressViewComponent } from './contact_address/contact-address-view/contact-address-view.component';
+import { CreateUpdateContactAddressComponent } from './contact_address/create-update-contact-address/create-update-contact-address.component';
 
 
 
@@ -35,8 +37,10 @@ import { CreateUpdateAddress } from './address/create-update-address/create-upda
     PersonalDetails,
     EmergencyContacts,
     WorkDetails,
-    AddressView,
-    CreateUpdateAddress
+    AddressViewComponent,
+    CreateUpdateAddressComponent,
+    ContactAddressViewComponent,
+    CreateUpdateContactAddressComponent
   ],
   imports: [
     BrowserModule,

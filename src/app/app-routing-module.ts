@@ -8,6 +8,10 @@ import { CreateUpdateContactComponent } from './contact/create-update-contact/cr
 import { CreateUpdateContactTypeComponent } from './contact_type/create-update-contact-type/create-update-contact-type.component';
 import { ContactTypeViewComponent } from './contact_type/contact-type-view/contact-type-view.component';
 import { ViewProfile } from './temp/view-profile/view-profile';
+import { AddressViewComponent } from './address/address-view/address-view.component';
+import { CreateUpdateAddressComponent } from './address/create-update-address/create-update-address.component';
+import { ContactAddressViewComponent } from './contact_address/contact-address-view/contact-address-view.component';
+import { CreateUpdateContactAddressComponent } from './contact_address/create-update-contact-address/create-update-contact-address.component';
 
 const routes: Routes = [
   { path: 'contact-list', component: ContactListComponent },
@@ -19,7 +23,13 @@ const routes: Routes = [
   {path:'contacts/edit/:id',component:CreateUpdateContactComponent},
   {path:'contact-types',component:ContactTypeViewComponent},
   {path:'contact-type/create',component:CreateUpdateContactTypeComponent},
-  {path:'contact-type/edit/:id',component:CreateUpdateContactTypeComponent}
+  {path:'contact-type/edit/:id',component:CreateUpdateContactTypeComponent},
+  {path:'addresses',component:AddressViewComponent},
+  {path:'address/create',component:CreateUpdateAddressComponent},
+  {path:'address/edit/:id',component:CreateUpdateAddressComponent},
+  {path:'contact-addresses',component:ContactAddressViewComponent},
+  {path:'contact-address/create',component:CreateUpdateContactAddressComponent},
+  {path:'contact-address/edit/:id',component:CreateUpdateContactAddressComponent}
 ];
 
 @NgModule({

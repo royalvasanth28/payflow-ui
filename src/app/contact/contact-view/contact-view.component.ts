@@ -11,12 +11,12 @@ export class ContactViewComponent implements OnInit {
 
   contacts: any[] = [];
   selectedContact: any = null;
- 
+
   constructor(private contactView: ContactListService) { }
 
   ngOnInit(): void {
     this.showcontact();
-  } 
+  }
 
   showcontact() {
     this.contactView.getContacts().subscribe((result: any) => {
@@ -25,7 +25,7 @@ export class ContactViewComponent implements OnInit {
   }
 
   onDeleteContact(contactId: number) {
-    if (confirm('Are you sure you want to delete this contact?')) {
+    if (confirm('Are you sure, you want to delete this contact?')) {
       this.contactView.deleteContact(contactId).subscribe({
         next: () => {
           alert('Contact deleted successfully');

@@ -2,17 +2,17 @@
     <div class="col-12 pt-2 pb-4">
         <div class="card shadow-sm m-3">
             <div class="card-header bg-warning text-center">
-                <h5 class="text-white m-0 "> {{ pageTitle }}</h5>
+                <h5 class="text-white m-0"> {{ pageTitle }}</h5>
             </div>
             <div class="card-body pt-3">
                 <form>
-                    <div class="row g-3">
+                    <div class="row g-3"> 
                         <div class="col-md-4">
                             <label for="name">Name</label>
                             <input id="name" type="text" [(ngModel)]="contactObj.name" name="name" class="form-control"
                                 placeholder="Contact Name">
                         </div> 
-                        <div class="col-md-4">
+                        <div class="col-md-4"> 
                             <label for="email">Email</label>
                             <input id="email" type="email" [(ngModel)]="contactObj.email" name="email" class="form-control"
                                 placeholder="Enter Email Id">
@@ -73,7 +73,7 @@
                             <button class="btn btn-success" (click)="onSaveContact()">{{ buttonLabel }}</button>
                         </div>
                     </div>
-                </form>
+                </form> 
             </div>
         </div>
     </div>

@@ -1,1 +1,65 @@
-<p>create-update-address works!</p>
+<div class="row pt-1">
+    <div class="col-12 pb-4">
+        <div class="card shadow-sm border-0 m-3">
+            <div class="card-header bg-warning text-center">
+                <h5 class="text-white m-0">{{ pageTitle }}</h5>
+            </div>
+            <div class="card-body pt-3">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <label for="add1">Street 1</label>
+                            <input id="add1" type="text" [(ngModel)]="addressObj.addressStreet" name="addressStreet"
+                                class="form-control" placeholder="Address 1">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="add2">Street 2</label>
+                            <input id="add2" type="text" [(ngModel)]="addressObj.addressStreet_2" name="addressStreet_2"
+                                class="form-control" placeholder="Address 2">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="city">City</label>
+                            <input id="city" type="text" [(ngModel)]="addressObj.addressCity" name="addressCity"
+                                class="form-control" placeholder="City">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="dist">District</label>
+                            <input id="dist" type="text" [(ngModel)]="addressObj.addressDist" name="addressDist"
+                                class="form-control" placeholder="District">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="state">State</label>
+                            <input id="state" type="text" [(ngModel)]="addressObj.addressState" name="addressState"
+                                class="form-control" placeholder="State">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="pin">PinCode</label>
+                            <input id="pin" type="text" [(ngModel)]="addressObj.addressPinCode" name="addressPinCode"
+                                class="form-control" placeholder="Pin Code">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="type">Type</label>
+                            <input id="type" type="number" [(ngModel)]="addressObj.addressType" name="addressType"
+                                class="form-control" placeholder="Address Type">
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col d-flex justify-content-end gap-2">
+                            <button type="button" (click)="resetAddressForm()" class="btn btn-secondary">Reset</button>
+                            <button type="submit" (click)="onSaveAddress()" class="btn btn-success">
+                                {{ buttonLabel }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-12 text-end py-2">
+        <button class="btn btn-success btn-sm rounded-3"><i class="bi bi-plus-lg"></i>Create New Contact
+            Address</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card text-center shadow-sm border-0 mb-4">
+            <div class="card-header bg-warning py-3">
+                <h5 class="text-white m-0">Contact Address List<span
+                        class="badge bg-dark ms-2">({{contactAddresses.length}})</span></h5>
+            </div>
+            <div class="card-body py-3 px-2">
+                <table class="table table-bordered align-middle shadow-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Contact Address Id</th>
+                            <th>Contact Id</th>
+                            <th>Address Id</th>
+                            <th>Created By</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contactaddress of contactAddresses; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{contactaddress.id}}</td>
+                            <td>{{contactaddress.contact.contactId}}</td>
+                            <td>{{contactaddress.address.addressId}}</td>
+                            <td>{{contactaddress.createdBy}}</td>
+                            <td>{{contactaddress.createdAt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -15,7 +15,7 @@ export class CreateUpdateContactComponent implements OnInit {
   contactObj: any = {
     "contactId": null,
     "name": "",
-    "email": "", 
+    "email": "",
     "phone": "",
     "website": "",
     "status": true,
@@ -32,7 +32,7 @@ export class CreateUpdateContactComponent implements OnInit {
   pageTitle = 'Create New Contact';
   buttonLabel = 'Save Contact';
 
-  constructor(private contactService: ContactListService, private route: ActivatedRoute,private router:Router) { }
+  constructor(private contactService: ContactListService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -57,7 +57,7 @@ export class CreateUpdateContactComponent implements OnInit {
 
   onSaveContact() {
     if (this.contactObj.contactId) {
-      this.contactService.updateContact(this.contactObj).subscribe({
+      this.contactService.updateContact(this.contactObj.contactId, this.contactObj).subscribe({
         next: () => {
           alert('Contact updated successfully');
           this.router.navigate(['/contacts'])

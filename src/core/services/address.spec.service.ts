@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ContactListService } from './contact-list.service';
+import { AddressService } from './address.service';
 
-describe('ContactList', () => {
-  let service: ContactListService;
+describe('Address', () => {
+  let service: AddressService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ContactListService);
+    service = TestBed.inject(AddressService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  }); 
+  });
 });
+ 
