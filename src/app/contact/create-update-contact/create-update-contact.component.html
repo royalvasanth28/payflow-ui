@@ -1,9 +1,10 @@
 <div class="row pt-2">
     <div class="col-12 pt-2 pb-4">
-        <div class="card shadow-sm m-3">
+        <div class="card border-0 shadow m-3">
             <div class="card-header bg-warning text-center">
                 <h5 class="text-white m-0"> {{ pageTitle }}</h5>
             </div>
+
             <div class="card-body pt-3">
                 <form>
                     <div class="row g-3"> 
@@ -66,9 +67,9 @@
                             <input id="cti" type="number" [(ngModel)]="contactObj.contactType.contactTypeId" name="contact"
                                 class="form-control" placeholder="Enter Contact Type Id">
                         </div>
-                    </div>
+                    </div> 
                     <div class="row pt-4">
-                        <div class="col d-flex justify-content-end gap-2">
+                        <div class="d-flex justify-content-end gap-2">
                             <button class="btn btn-secondary" (click)="resetContactForm()">Reset</button>
                             <button class="btn btn-success" (click)="onSaveContact()">{{ buttonLabel }}</button>
                         </div>
@@ -77,4 +78,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

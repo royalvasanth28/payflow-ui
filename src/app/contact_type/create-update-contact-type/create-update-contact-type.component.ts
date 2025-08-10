@@ -26,8 +26,8 @@ export class CreateUpdateContactTypeComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if(id){
-      this.pageTitle = 'Update contact type';
-      this.buttonLable = 'Update contact type';
+      this.pageTitle = 'Update Contact Type';
+      this.buttonLable = 'Update Contact Type';
        this.loadContactTypeById(Number(id));
     }
   } 

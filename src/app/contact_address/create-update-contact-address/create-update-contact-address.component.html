@@ -1,1 +1,32 @@
-<p>create-update-contact-address works!</p>
+<div class="row pt-3">
+    <div class="col-12 pb-4">
+        <div class="card m-3 shadow border-0">
+            <div class="card-header bg-warning text-center">
+                <h5 class="text-white m-0"> {{pageTitle}} </h5>
+            </div>
+
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="CID">Contact Id</label>
+                            <input type="number" [(ngModel)]="contactAddressObj.contact.contactId" class="form-control"
+                                name="contactId" id="CID">
+                        </div>
+                        <div class="col-6">
+                            <label for="AID">Address Id</label>
+                            <input type="number" [(ngModel)]="contactAddressObj.address.addressId" class="form-control"
+                                name="addressId" id="AID">
+                        </div>
+                    </div>
+                    <div class="row pt-4"> 
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary" (click)="resetContactAddressForm()">Reset</button>
+                            <button class="btn btn-success" (click)="onSaveContactAddress()"> {{buttonLabel}} </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

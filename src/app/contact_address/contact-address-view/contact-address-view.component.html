@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-12 text-end py-2">
-        <button class="btn btn-success btn-sm rounded-3"><i class="bi bi-plus-lg"></i>Create New Contact
+        <button class="btn btn-success btn-sm rounded-3" [routerLink]="['/contact-address/create']"><i
+                class="bi bi-plus-lg"></i>Create New Contact
             Address</button>
     </div>
 </div>
@@ -22,6 +23,7 @@
                             <th>Address Id</th>
                             <th>Created By</th>
                             <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +33,17 @@
                             <td>{{contactaddress.contact.contactId}}</td>
                             <td>{{contactaddress.address.addressId}}</td>
                             <td>{{contactaddress.createdBy}}</td>
-                            <td>{{contactaddress.createdAt}}</td>
+                            <td>{{contactaddress.createdAt |date:'medium'}}</td>
+                            <td>
+                                <div class=" d-flex justify-content-center gap-2">
+                                    <button class="btn btn-success btn-sm"
+                                        [routerLink]="['/contact-address/edit',contactaddress.id]"><i
+                                            class="bi bi-pencil-fill"></i></button>
+                                    <button class="btn btn-danger btn-sm"
+                                        (click)="deleteContactAddress(contactaddress.id)"><i
+                                            class="bi bi-trash3-fill"></i></button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

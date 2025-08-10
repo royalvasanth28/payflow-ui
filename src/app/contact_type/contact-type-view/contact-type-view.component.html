@@ -7,14 +7,14 @@
 
 <div class="row pt-2">
     <div class="col-12">
-        <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header text-center bg-warning text-white py-3">
+        <div class="card text-center shadow-sm border-0 mb-4">
+            <div class="card-header  bg-warning text-white py-3">
                 <h5 class="mb-0">Contact Type List <span class="bg-dark badge ms-2">({{contactTypes.length}})</span></h5>
             </div>
-            <div class="card-body px-3 py-2">
+            <div class="card-body px-2 py-3">
                 <table class="table table-bordered align-middle shadow-sm">
                     <thead class="table-light">
-                        <tr class="text-center">
+                        <tr>
                             <th>S.No</th>
                             <th>Contact type Id</th>
                             <th>Name</th>
@@ -41,7 +41,7 @@
                                         {{contact.contactId}} - ({{contact.name}})
                                     </li>
                                 </ul>
-                            </td>
+                            </td> 
                             <td> 
                                 <div class="d-flex justify-content-center gap-2">
                                     <button class="btn btn-success btn-sm" [routerLink]="['/contact-type/edit',contactType.contactTypeId]"><i class="bi bi-pencil-fill"></i></button>

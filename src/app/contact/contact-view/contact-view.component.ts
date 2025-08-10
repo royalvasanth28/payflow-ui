@@ -11,9 +11,9 @@ export class ContactViewComponent implements OnInit {
 
   contacts: any[] = [];
   selectedContact: any = null;
-
+ 
   constructor(private contactView: ContactListService) { }
-
+ 
   ngOnInit(): void {
     this.showcontact();
   }
