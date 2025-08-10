@@ -23,7 +23,7 @@ export class ContactAddressService {
   }
 
   updateContactAddress(id:number,contactaddress:any){
-    return this.http.put(`${this.baseUrl}/update/${id},`,contactaddress);
+    return this.http.put(`${this.baseUrl}/update/${id}`,contactaddress);
   }
 
   deleteContactAddress(id:number){

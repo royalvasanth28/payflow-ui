@@ -51,7 +51,7 @@ export class CreateUpdateContactAddressComponent implements OnInit {
       this.contactAddressSerice.updateContactAddress(this.contactAddressObj.id, this.contactAddressObj).subscribe({
         next: () => {
           alert("Contact Address Updated Successfully");
-          this.router.navigate(['/contactAddresses']);
+          this.router.navigate(['/contact-addresses']);
           this.resetContactAddressForm();
         },
         error: (err: any) => {
@@ -63,7 +63,7 @@ export class CreateUpdateContactAddressComponent implements OnInit {
       this.contactAddressSerice.postContactAddress(this.contactAddressObj).subscribe({
         next: () => {
           alert("Contact Address Created Successfully");
-          this.router.navigate(['/contactAddresses']);
+          this.router.navigate(['/contact-addresses']);
           this.resetContactAddressForm();
         },
         error: (err: any) => {
